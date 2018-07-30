@@ -1,0 +1,13 @@
+language: node
+node:
+  - latest
+
+services:
+  - docker
+
+install:
+  - docker build -t node .
+  - docker run -d -p 127.0.0.1:3000:3000 --name node node
+
+script:
+  - docker ps | grep -q node
